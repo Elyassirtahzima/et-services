@@ -22,17 +22,17 @@
     .wrap{ max-width:1200px; margin:auto; padding:12px 18px; display:flex; align-items:center; gap:16px }
     .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.02em }
     .brand,
-.brand:link,
-.brand:visited {
-  color: var(--fg);       /* keep it the same white as header text */
-  text-decoration: none;
-}
+    .brand:link,
+    .brand:visited {
+      color: var(--fg);
+      text-decoration: none;
+    }
 
-.brand:hover,
-.brand:focus-visible {
-  text-decoration: none;
-  opacity: 0.9;          /* subtle hover feedback */
-}
+    .brand:hover,
+    .brand:focus-visible {
+      text-decoration: none;
+      opacity: 0.9;
+    }
     .brand-logo{ width:28px; height:28px; object-fit:contain; border-radius:6px; box-shadow:0 0 0 1px rgba(255,255,255,.15), 0 4px 10px rgba(0,0,0,.35) }
     nav{ display:flex; align-items:center; gap:8px }
     nav a{ color:inherit; text-decoration:none; margin:0 10px; border-bottom:2px solid transparent; padding:6px 0; transition:border-color .2s ease }
@@ -68,32 +68,31 @@
     .svc p{ margin:0; color:var(--muted); font-size:14px }
 
     /* USP */
-.usp{
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0,1fr));
-  gap:12px;
-  margin-top:14px;
-}
+    .usp{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:12px;
+      margin-top:14px;
+    }
 
-.usp .pill{
-  padding:.6rem .95rem;
-  border:1px solid var(--border);
-  border-radius:9999px;
-  background:var(--glass);
-  font-size:13px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
+    .usp .pill{
+      padding:.6rem .95rem;
+      border:1px solid var(--border);
+      border-radius:9999px;
+      background:var(--glass);
+      font-size:13px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
 
-.usp-icon{
-  width:22px;
-  height:22px;
-  object-fit:contain;
-  border-radius:999px;
-  flex-shrink:0;
-}
-
+    .usp-icon{
+      width:22px;
+      height:22px;
+      object-fit:contain;
+      border-radius:999px;
+      flex-shrink:0;
+    }
 
     /* Gallery + Lightbox */
     .gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px }
@@ -104,14 +103,7 @@
     .lightbox.open{ display:grid }
     .lb-img{ max-width:92vw; max-height:80vh; border-radius:16px; border:1px solid var(--border); box-shadow:var(--shadow) }
     .lb-cap{ margin-top:10px; color:#cbd5e1; text-align:center }
-
-    /* Pricing */
-    .pricing{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px }
-    .price{ padding:18px }
-    .price h3{ margin:0 0 8px }
-    .num{ font-size:28px; font-weight:800 }
-    .small{ font-size:12px; color:var(--muted) }
-
+    
     /* Reviews */
     .rating-badge{display:inline-flex;align-items:center;gap:8px;padding:.45rem .7rem;border:1px solid var(--border);border-radius:9999px;background:var(--glass);font-size:13px}
     .testis{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:12px }
@@ -174,7 +166,7 @@
       }
       nav a{padding:12px 4px; margin:0}
       nav.open{opacity:1; pointer-events:auto; transform:translateY(0)}
-      .cta{display:none} /* hide header CTAs on mobile; use sticky bar */
+      .cta{display:none}
       .heroImg{height:260px}
     }
     @media (max-width:600px){
@@ -183,49 +175,42 @@
       .testis{grid-template-columns:1fr}
     }
     @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}.tile img{transition:none}}
-  /* Mobile UI Upgrade for Hero + USP badges */
-@media (max-width: 600px) {
 
-  .hero {
-    grid-template-columns: 1fr;
-    text-align: left;
-  }
-
-  .buttons {
-    gap: 8px;
-  }
-
-  /* Smaller, cleaner badges */
-  .usp {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    margin-top: 14px;
-  }
-
-  .usp .pill {
-    padding: .55rem .65rem;
-    border-radius: 14px;
-    background: rgba(255,255,255,.05);
-    backdrop-filter: blur(8px);
-    font-size: 12px;
-    min-height: 44px;
-    border: none;
-    box-shadow: 0 0 0 1px rgba(255,255,255,.06);
-  }
-
-  .usp-icon {
-    width: 18px;
-    height: 18px;
-    filter: none;
-    opacity: .95;
-  }
-
-  .heroImg {
-    height: 220px;
-    border-radius: 14px;
-    margin-top: 16px;
-  }
-}
+    @media (max-width: 600px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+      .buttons {
+        gap: 8px;
+      }
+      .usp {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-top: 14px;
+      }
+      .usp .pill {
+        padding: .55rem .65rem;
+        border-radius: 14px;
+        background: rgba(255,255,255,.05);
+        backdrop-filter: blur(8px);
+        font-size: 12px;
+        min-height: 44px;
+        border: none;
+        box-shadow: 0 0 0 1px rgba(255,255,255,.06);
+      }
+      .usp-icon {
+        width: 18px;
+        height: 18px;
+        filter: none;
+        opacity: .95;
+      }
+      .heroImg {
+        height: 220px;
+        border-radius: 14px;
+        margin-top: 16px;
+      }
+    }
 
   </style>
 </head>
@@ -236,19 +221,17 @@
       <button class="menu-btn" aria-label="Toggle menu" aria-controls="mainnav" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
-  <a href="/index.html" class="brand" aria-label="Back to ET Services home">
-  <img class="brand-logo" src="./images/et-removal-logo.jpg" alt="ET Removal Services logo" width="28" height="28">
-  <span>ET Removal Services</span>
-</a>
+      <a href="/index.html" class="brand" aria-label="Back to ET Services home">
+        <img class="brand-logo" src="./images/et-removal-logo.jpg" alt="ET Removal Services logo" width="28" height="28">
+        <span>ET Removal Services</span>
+      </a>
       <div class="spacer"></div>
       <nav id="mainnav" aria-label="Main navigation">
         <a href="#services">Services</a>
         <a href="#work">Our Work</a>
-        <a href="#pricing">Pricing</a>
         <a href="#reviews">Reviews</a>
         <a href="#booking">Book</a>
       </nav>
-      <!-- Desktop CTAs -->
       <a class="cta" href="https://www.facebook.com/p/E-T-Removal-Services-LTD-100087564645827/" target="_blank" rel="noopener" aria-label="Visit our Facebook page">Facebook</a>
       <a class="cta" href="https://wa.me/447305848484" target="_blank" rel="noopener" aria-label="WhatsApp us">WhatsApp</a>
     </div>
@@ -263,91 +246,89 @@
         <a class="btn primary" href="#booking">Get a Quote</a>
         <a class="btn" href="#work">See Past Moves</a>
       </div>
-<div class="usp">
-  <div class="pill">
-    <img src="./images/brighton-hove-council-logo.png"
-         alt="Brighton &amp; Hove City Council"
-         class="usp-icon">
-    <span>Trusted by Brighton &amp; Hove City Council</span>
-  </div>
+      <div class="usp">
+        <div class="pill">
+          <img src="./images/brighton-hove-council-logo.png"
+               alt="Brighton &amp; Hove City Council"
+               class="usp-icon">
+          <span>Trusted by Brighton &amp; Hove City Council</span>
+        </div>
 
-  <div class="pill">
-    <img src="./images/google-fb-5star.png"
-         alt="5 star Facebook and Google reviews"
-         class="usp-icon">
-    <span>5★ Facebook &amp; Google reviews</span>
-  </div>
+        <div class="pill">
+          <img src="./images/google-fb-5star.png"
+               alt="5 star Facebook and Google reviews"
+               class="usp-icon">
+          <span>5★ Facebook &amp; Google reviews</span>
+        </div>
 
-  <div class="pill">
-    <img src="./images/discount-icon.svg"
-         alt="Discounts for customers with additional needs"
-         class="usp-icon">
-    <span>Discounts for customers with additional needs</span>
-  </div>
-</div>
-
+        <div class="pill">
+          <img src="./images/discount-icon.svg"
+               alt="Discounts for customers with additional needs"
+               class="usp-icon">
+          <span>Discounts for customers with additional needs</span>
+        </div>
+      </div>
     </div>
     <aside class="heroCard" aria-label="Hero image">
       <img class="heroImg" src="./images/removals-hero.jpg" alt="Team loading boxes into a van"/>
     </aside>
   </section>
 
- <!-- Services -->
-<section class="section" id="services" tabindex="-1">
-  <h2>What we do</h2>
-  <p class="muted">Clear options for small and full moves. Mix & match to fit your job.</p>
+  <!-- Services -->
+  <section class="section" id="services" tabindex="-1">
+    <h2>What we do</h2>
+    <p class="muted">Clear options for small and full moves. Mix & match to fit your job.</p>
 
-  <div class="grid">
-    <article class="card svc">
-      <img src="./images/rem-s1.png" alt="Home & Flat Moves">
-      <div>
-        <h3>Home & Flat Moves</h3>
-        <p>From studio flats to large family homes — handled with care.</p>
-      </div>
-    </article>
+    <div class="grid">
+      <article class="card svc">
+        <img src="./images/rem-s1.png" alt="Home & Flat Moves">
+        <div>
+          <h3>Home & Flat Moves</h3>
+          <p>From studio flats to large family homes — handled with care.</p>
+        </div>
+      </article>
 
-    <article class="card svc">
-      <img src="./images/rem-s2.jpeg" alt="Office & Business Relocations">
-      <div>
-        <h3>Office & Business Relocations</h3>
-        <p>Desks, chairs, IT and documents — relocated with minimal downtime.</p>
-      </div>
-    </article>
+      <article class="card svc">
+        <img src="./images/rem-s2.jpeg" alt="Office & Business Relocations">
+        <div>
+          <h3>Office & Business Relocations</h3>
+          <p>Desks, chairs, IT and documents — relocated with minimal downtime.</p>
+        </div>
+      </article>
 
-    <article class="card svc">
-      <img src="./images/rem-s4.jpg" alt="Packing & Unpacking Support">
-      <div>
-        <h3>Packing & Unpacking Support</h3>
-        <p>Fragile protection, full or partial packing — stress-free setup.</p>
-      </div>
-    </article>
+      <article class="card svc">
+        <img src="./images/rem-s4.jpg" alt="Packing & Unpacking Support">
+        <div>
+          <h3>Packing & Unpacking Support</h3>
+          <p>Fragile protection, full or partial packing — stress-free setup.</p>
+        </div>
+      </article>
 
-    <article class="card svc">
-      <img src="./images/rem-s3.jpg" alt="Single Items to Full Loads">
-      <div>
-        <h3>Single Items to Full Loads</h3>
-        <p>From a sofa delivery to full-house clearouts — we’ll move it.</p>
-      </div>
-    </article>
+      <article class="card svc">
+        <img src="./images/rem-s3.jpg" alt="Single Items to Full Loads">
+        <div>
+          <h3>Single Items to Full Loads</h3>
+          <p>From a sofa delivery to full-house clearouts — we’ll move it.</p>
+        </div>
+      </article>
 
-    <article class="card svc">
-      <img src="./images/rem-s5.jpeg" alt="Household, Office & Garage Clearances">
-      <div>
-        <h3>Household, Office & Garage Clearances</h3>
-        <p>Responsible disposal and recycling — clutter sorted.</p>
-      </div>
-    </article>
+      <article class="card svc">
+        <img src="./images/rem-s5.jpeg" alt="Household, Office & Garage Clearances">
+        <div>
+          <h3>Household, Office & Garage Clearances</h3>
+          <p>Responsible disposal and recycling — clutter sorted.</p>
+        </div>
+      </article>
 
-    <article class="card svc">
-      <img src="./images/rem-s6.webp" alt="Local & Nationwide Moves">
-      <div>
-        <h3>Local & Nationwide Moves</h3>
-        <p>Brighton, Peacehaven and across the UK — wherever you’re going.</p>
-      </div>
-    </article>
-  </div>
-</section>
-
+      <article class="card svc">
+        <img src="./images/rem-s6.webp" alt="Local & Nationwide Moves">
+        <div>
+          <h3>Local & Nationwide Moves</h3>
+          <p>Brighton, Peacehaven and across the UK — wherever you’re going.</p>
+        </div>
+      </article>
+    </div>
+  </section>
 
   <!-- Our Work -->
   <section class="section" id="work" tabindex="-1">
@@ -361,10 +342,15 @@
       <figure class="tile"><img src="./images/rem-work-5.png" alt="Furniture re-assembly" data-cap="Wardrobe re-assembly · Worthing"></figure>
       <figure class="tile"><img src="./images/rem-work-6.jpg" alt="Local delivery" data-cap="Local delivery · Saltdean"></figure>
     </div>
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview"><div><img class="lb-img" id="lbImg" alt="Preview"><div class="lb-cap" id="lbCap"></div></div></div>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+      <div>
+        <img class="lb-img" id="lbImg" alt="Preview">
+        <div class="lb-cap" id="lbCap"></div>
+      </div>
+    </div>
   </section>
 
-    <!-- Reviews -->
+  <!-- Reviews -->
   <section class="section" id="reviews" tabindex="-1">
     <h2>What customers say</h2>
     <p class="rating-badge">⭐ 98% recommend <span class="muted">· 34 Facebook reviews</span></p>
@@ -394,13 +380,20 @@
     <p class="muted">Tell us about your move. We’ll confirm by phone or WhatsApp.</p>
     <div class="contactGrid">
       <div class="card" style="padding:18px">
-        <!-- ✅ Names added + real submit handler -->
-        <form id="quoteForm" novalidate>
+        <!-- ✅ Netlify form -->
+        <form
+          id="quoteForm"
+          name="removal-quote"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="company"
+        >
+          <input type="hidden" name="form-name" value="removal-quote" />
+
           <div><label class="muted" style="font-size:12px" for="fullName">Full name</label><input id="fullName" name="fullName" required placeholder="Jane Doe" autocomplete="name"></div>
           <div><label class="muted" style="font-size:12px" for="phone">Phone</label><input id="phone" name="phone" required placeholder="+44" autocomplete="tel"></div>
           <div><label class="muted" style="font-size:12px" for="email">Email</label><input id="email" name="email" type="email" placeholder="e.tremovalservices@outlook.com" autocomplete="email"></div>
 
-          <!-- Moving date -->
           <div>
             <label class="muted" style="font-size:12px" for="movingDate">Moving date</label>
             <div class="input-icon">
@@ -559,78 +552,6 @@
       minDate: "today",
       disableMobile: true
     });
-
-    // ✅ Minimal email submit to Netlify function
-    (function(){
-      const form = document.getElementById('quoteForm');
-      const msg  = document.getElementById('formMsg');
-      const btn  = document.getElementById('quoteSubmit');
-
-      function err(t){ msg.textContent = t; }
-
-      form.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        msg.textContent = '';
-        btn.disabled = true;
-
-        // Grab values
-        const fullName = document.getElementById('fullName').value.trim();
-        const phone    = document.getElementById('phone').value.trim();
-        const email    = document.getElementById('email').value.trim();
-        const date     = document.getElementById('movingDate').value.trim();
-        const from     = document.getElementById('from').value.trim();
-        const to       = document.getElementById('to').value.trim();
-        const moveSize = document.getElementById('moveSize').value;
-        const services = document.getElementById('services').value;
-        const details  = document.getElementById('message').value.trim();
-        const company  = form.querySelector('input[name="company"]').value;
-
-        // Honeypot
-        if (company) { msg.textContent = 'Thanks!'; form.reset(); btn.disabled=false; return; }
-
-        // Minimal validation matching the function
-        if (!fullName) return err('Please enter your name'), btn.disabled=false;
-        if (email && !/^\S+@\S+\.\S+$/.test(email)) return err('Please enter a valid email'), btn.disabled=false;
-        if (!phone) return err('Please enter your phone'), btn.disabled=false;
-        if (!from || !to) return err('Please enter from/to postcodes'), btn.disabled=false;
-        if (!moveSize) return err('Please select a move size'), btn.disabled=false;
-
-        // Map to function fields
-        const payload = {
-          fullName,
-          phone,
-          email,
-          // function accepts address OR postcode. We'll send a single combined address string.
-          address: `${from} ➝ ${to}`,
-          service: `${moveSize}${services ? ' · ' + services : ''}`,
-          date,
-          message: details || `Move request from ${from} to ${to}`
-          // (no attachments in this minimal version)
-        };
-
-        try{
-          const res = await fetch('/.netlify/functions/quote-request', {
-            method: 'POST',
-            headers: {'Content-Type':'application/json'},
-            body: JSON.stringify(payload)
-          });
-          const text = await res.text();
-          let data = {}; try { data = JSON.parse(text); } catch {}
-
-          if(!res.ok) throw new Error(data?.error || text || 'Submission failed');
-
-          msg.textContent = 'Thanks! Your quote request has been received.';
-          form.reset();
-          // clear date widget
-          const fp = document.getElementById('movingDate')._flatpickr; if (fp) fp.clear();
-        }catch(e){
-          msg.textContent = 'Sorry, something went wrong. Please try again or call 01273 569343.';
-          console.error(e);
-        }finally{
-          btn.disabled = false;
-        }
-      });
-    })();
   </script>
 </body>
 </html>
