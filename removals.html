@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ET Removal Services | Removals & Man with a Van</title>
+  <meta name="description" content="Local & reliable removals: flats, houses, offices. Packing, loading, transport and setup. Get a quote fast."/>
+  <link rel="preload" as="image" href="./images/et-removal-logo.jpg" />
+
+  <!-- ✅ Flatpickr Calendar CSS (added) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+  <style>
+    :root{ --bg:#0f172a; --fg:#e5e7eb; --muted:#a7b0c0; --accent:#f59e0b; --glass:rgba(255,255,255,.06); --border:rgba(255,255,255,.09); --shadow:0 16px 32px rgba(0,0,0,.45); --header-h:72px; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html{scroll-behavior:smooth}
+    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Arial; background:radial-gradient(1200px 700px at 50% 0%, #111827 0%, var(--bg) 55%); color:var(--fg); }
+
+    /* Header */
+    .header{ position:fixed; inset:0 0 auto 0; z-index:1000; background:rgba(7,12,24,.78); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
+    .wrap{ max-width:1200px; margin:auto; padding:12px 18px; display:flex; align-items:center; gap:16px }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.02em }
+    .brand,
+.brand:link,
+.brand:visited {
+  color: var(--fg);       /* keep it the same white as header text */
+  text-decoration: none;
+}
+
+.brand:hover,
+.brand:focus-visible {
+  text-decoration: none;
+  opacity: 0.9;          /* subtle hover feedback */
+}
+    .brand-logo{ width:28px; height:28px; object-fit:contain; border-radius:6px; box-shadow:0 0 0 1px rgba(255,255,255,.15), 0 4px 10px rgba(0,0,0,.35) }
+    nav{ display:flex; align-items:center; gap:8px }
+    nav a{ color:inherit; text-decoration:none; margin:0 10px; border-bottom:2px solid transparent; padding:6px 0; transition:border-color .2s ease }
+    nav a:hover{ border-bottom-color:rgba(255,255,255,.35) }
+    nav a.active{ border-bottom-color:rgba(255,255,255,.7) }
+    .spacer{ flex:1 }
+    .cta{ display:inline-flex; align-items:center; gap:8px; padding:.55rem .9rem; border-radius:9999px; border:1px solid var(--border); background:var(--glass); color:inherit; text-decoration:none }
+    .menu-btn{ display:none; border:1px solid var(--border); background:var(--glass); border-radius:10px; padding:.5rem .7rem; cursor:pointer }
+    .menu-btn svg{ width:22px; height:22px }
+
+    /* Sections */
+    .hero,.section{ scroll-margin-top:var(--header-h); position:relative; z-index:0; }
+    .section{ max-width:1200px; margin:40px auto; padding:0 18px }
+    .section h2{ margin:0 0 8px; font-size:clamp(22px,3.6vw,34px) }
+    .muted{ color:var(--muted); margin:0 0 18px }
+
+    /* Hero */
+    .hero{ max-width:1200px; margin:24px auto; padding:0 18px; display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:center }
+    .hero h1{ margin:.2rem 0 .6rem; font-size:clamp(28px,5vw,50px) }
+    .hero p{ margin:0 0 1rem; color:var(--muted) }
+    .buttons{ display:flex; gap:10px; flex-wrap:wrap }
+    .btn{ padding:.78rem 1rem; border-radius:12px; border:1px solid var(--border); text-decoration:none; color:inherit; background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(0,0,0,.25)); box-shadow:var(--shadow) }
+    .btn.primary{ background:linear-gradient(180deg, rgba(245,158,11,.25), rgba(0,0,0,.25)); border-color:rgba(245,158,11,.35) }
+    .heroCard{ background:var(--glass); border:1px solid var(--border); border-radius:18px; box-shadow:var(--shadow); overflow:hidden }
+    .heroImg{ width:100%; height:320px; object-fit:cover; background:#1f2937; display:block }
+
+    /* Services */
+    .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px }
+    .card{ background:var(--glass); border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow) }
+    .svc{ padding:16px; display:grid; grid-template-columns:72px 1fr; gap:12px; align-items:center }
+    .svc img{ width:72px; height:72px; border-radius:12px; object-fit:cover; background:#1f2937 }
+    .svc h3{ margin:0 0 4px; font-size:18px }
+    .svc p{ margin:0; color:var(--muted); font-size:14px }
+
+    /* USP */
+.usp{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:12px;
+  margin-top:14px;
+}
+
+.usp .pill{
+  padding:.6rem .95rem;
+  border:1px solid var(--border);
+  border-radius:9999px;
+  background:var(--glass);
+  font-size:13px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.usp-icon{
+  width:22px;
+  height:22px;
+  object-fit:contain;
+  border-radius:999px;
+  flex-shrink:0;
+}
+
+
+    /* Gallery + Lightbox */
+    .gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px }
+    .tile{ position:relative; border-radius:14px; overflow:hidden; border:1px solid var(--border); cursor:pointer }
+    .tile img{ width:100%; height:220px; object-fit:cover; display:block; background:#111827; transition:transform .25s ease }
+    .tile:hover img{ transform:scale(1.03) }
+    .lightbox{ position:fixed; inset:0; background:rgba(0,0,0,.9); display:none; place-items:center; z-index:50 }
+    .lightbox.open{ display:grid }
+    .lb-img{ max-width:92vw; max-height:80vh; border-radius:16px; border:1px solid var(--border); box-shadow:var(--shadow) }
+    .lb-cap{ margin-top:10px; color:#cbd5e1; text-align:center }
+
+    /* Pricing */
+    .pricing{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px }
+    .price{ padding:18px }
+    .price h3{ margin:0 0 8px }
+    .num{ font-size:28px; font-weight:800 }
+    .small{ font-size:12px; color:var(--muted) }
+
+    /* Reviews */
+    .rating-badge{display:inline-flex;align-items:center;gap:8px;padding:.45rem .7rem;border:1px solid var(--border);border-radius:9999px;background:var(--glass);font-size:13px}
+    .testis{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:12px }
+    .quote{ padding:16px }
+    .stars{ color:var(--accent) }
+
+    /* Booking */
+    .contactGrid{ display:grid; grid-template-columns:1fr 1fr; gap:16px }
+    form{ display:grid; grid-template-columns:1fr 1fr; gap:12px }
+    input,select,textarea{ width:100%; padding:.7rem .8rem; border-radius:12px; border:1px solid var(--border); background:rgba(255,255,255,.04); color:inherit }
+    textarea{ min-height:120px; grid-column:1/-1 }
+    .actions{ display:flex; gap:10px; align-items:center }
+
+    /* ✅ Input with icon (added) */
+    .input-icon{ position:relative; display:block }
+    .input-icon input{ padding-right:42px }
+    .input-icon .icon{
+      position:absolute; right:12px; top:50%; transform:translateY(-50%);
+      width:20px; height:20px; opacity:.85; color:#cbd5e1; pointer-events:none;
+    }
+
+    /* Footer */
+    footer{ margin:46px 0 70px }
+    .footerGrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px }
+    .card p{ margin:.2rem 0 }
+    .card a{ color:inherit; text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.35) }
+
+    /* Sticky mobile bar (phones only) */
+    .mobile-bar{
+      position:fixed; inset:auto 0 0 0; z-index:999;
+      background:rgba(7,12,24,.96); border-top:1px solid var(--border);
+      padding:10px 12px; gap:10px; display:none;
+    }
+    .mobile-bar a{
+      flex:1; text-align:center; text-decoration:none; color:#0b1220;
+      background:var(--accent); border-radius:12px; padding:.9rem 1rem;
+      font-weight:700; box-shadow:0 6px 20px rgba(245,158,11,.25)
+    }
+    .mobile-bar a.secondary{
+      background:rgba(255,255,255,.08); color:var(--fg);
+      border:1px solid var(--border); box-shadow:none
+    }
+
+    /* Responsive */
+    @media (max-width:1100px){
+      .hero{grid-template-columns:1fr}
+      .grid,.gallery,.pricing,.contactGrid,form,.footerGrid{grid-template-columns:1fr}
+      .usp{grid-template-columns:1fr 1fr}
+      .testis{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:900px){
+      .menu-btn{display:inline-flex}
+      nav{
+        position:fixed; top:var(--header-h); left:0; right:0;
+        background:rgba(7,12,24,.98); backdrop-filter:blur(10px);
+        border-bottom:1px solid var(--border); flex-direction:column;
+        align-items:flex-start; gap:0; padding:10px 16px;
+        transform:translateY(-16px); opacity:0; pointer-events:none;
+        transition:opacity .2s ease, transform .2s ease;
+      }
+      nav a{padding:12px 4px; margin:0}
+      nav.open{opacity:1; pointer-events:auto; transform:translateY(0)}
+      .cta{display:none} /* hide header CTAs on mobile; use sticky bar */
+      .heroImg{height:260px}
+    }
+    @media (max-width:600px){
+      .mobile-bar{display:flex}
+      .tile img{height:200px}
+      .testis{grid-template-columns:1fr}
+    }
+    @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}.tile img{transition:none}}
+  /* Mobile UI Upgrade for Hero + USP badges */
+@media (max-width: 600px) {
+
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .buttons {
+    gap: 8px;
+  }
+
+  /* Smaller, cleaner badges */
+  .usp {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .usp .pill {
+    padding: .55rem .65rem;
+    border-radius: 14px;
+    background: rgba(255,255,255,.05);
+    backdrop-filter: blur(8px);
+    font-size: 12px;
+    min-height: 44px;
+    border: none;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.06);
+  }
+
+  .usp-icon {
+    width: 18px;
+    height: 18px;
+    filter: none;
+    opacity: .95;
+  }
+
+  .heroImg {
+    height: 220px;
+    border-radius: 14px;
+    margin-top: 16px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="site-header">
+    <div class="wrap">
+      <button class="menu-btn" aria-label="Toggle menu" aria-controls="mainnav" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+  <a href="/index.html" class="brand" aria-label="Back to ET Services home">
+  <img class="brand-logo" src="./images/et-removal-logo.jpg" alt="ET Removal Services logo" width="28" height="28">
+  <span>ET Removal Services</span>
+</a>
+      <div class="spacer"></div>
+      <nav id="mainnav" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#work">Our Work</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#booking">Book</a>
+      </nav>
+      <!-- Desktop CTAs -->
+      <a class="cta" href="https://www.facebook.com/p/E-T-Removal-Services-LTD-100087564645827/" target="_blank" rel="noopener" aria-label="Visit our Facebook page">Facebook</a>
+      <a class="cta" href="https://wa.me/447305848484" target="_blank" rel="noopener" aria-label="WhatsApp us">WhatsApp</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div>
+      <h1>Removals Services — Brighton, Peacehaven & Nationwide</h1>
+      <p>Stress-free moves for flats, houses and offices. Packing, loading, transport and setup — handled with care.</p>
+      <div class="buttons">
+        <a class="btn primary" href="#booking">Get a Quote</a>
+        <a class="btn" href="#work">See Past Moves</a>
+      </div>
+<div class="usp">
+  <div class="pill">
+    <img src="./images/brighton-hove-council-logo.png"
+         alt="Brighton &amp; Hove City Council"
+         class="usp-icon">
+    <span>Trusted by Brighton &amp; Hove City Council</span>
+  </div>
+
+  <div class="pill">
+    <img src="./images/google-fb-5star.png"
+         alt="5 star Facebook and Google reviews"
+         class="usp-icon">
+    <span>5★ Facebook &amp; Google reviews</span>
+  </div>
+
+  <div class="pill">
+    <img src="./images/discount-icon.svg"
+         alt="Discounts for customers with additional needs"
+         class="usp-icon">
+    <span>Discounts for customers with additional needs</span>
+  </div>
+</div>
+
+    </div>
+    <aside class="heroCard" aria-label="Hero image">
+      <img class="heroImg" src="./images/removals-hero.jpg" alt="Team loading boxes into a van"/>
+    </aside>
+  </section>
+
+ <!-- Services -->
+<section class="section" id="services" tabindex="-1">
+  <h2>What we do</h2>
+  <p class="muted">Clear options for small and full moves. Mix & match to fit your job.</p>
+
+  <div class="grid">
+    <article class="card svc">
+      <img src="./images/rem-s1.png" alt="Home & Flat Moves">
+      <div>
+        <h3>Home & Flat Moves</h3>
+        <p>From studio flats to large family homes — handled with care.</p>
+      </div>
+    </article>
+
+    <article class="card svc">
+      <img src="./images/rem-s2.jpeg" alt="Office & Business Relocations">
+      <div>
+        <h3>Office & Business Relocations</h3>
+        <p>Desks, chairs, IT and documents — relocated with minimal downtime.</p>
+      </div>
+    </article>
+
+    <article class="card svc">
+      <img src="./images/rem-s4.jpg" alt="Packing & Unpacking Support">
+      <div>
+        <h3>Packing & Unpacking Support</h3>
+        <p>Fragile protection, full or partial packing — stress-free setup.</p>
+      </div>
+    </article>
+
+    <article class="card svc">
+      <img src="./images/rem-s3.jpg" alt="Single Items to Full Loads">
+      <div>
+        <h3>Single Items to Full Loads</h3>
+        <p>From a sofa delivery to full-house clearouts — we’ll move it.</p>
+      </div>
+    </article>
+
+    <article class="card svc">
+      <img src="./images/rem-s5.jpeg" alt="Household, Office & Garage Clearances">
+      <div>
+        <h3>Household, Office & Garage Clearances</h3>
+        <p>Responsible disposal and recycling — clutter sorted.</p>
+      </div>
+    </article>
+
+    <article class="card svc">
+      <img src="./images/rem-s6.webp" alt="Local & Nationwide Moves">
+      <div>
+        <h3>Local & Nationwide Moves</h3>
+        <p>Brighton, Peacehaven and across the UK — wherever you’re going.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+  <!-- Our Work -->
+  <section class="section" id="work" tabindex="-1">
+    <h2>What we’ve done</h2>
+    <p class="muted">Real local moves. Replace with your own van, team and customer photos.</p>
+    <div class="gallery" id="gallery">
+      <figure class="tile"><img src="./images/rem-work-1.jpeg" alt="1-bed flat move" data-cap="1-bed flat move · Peacehaven"></figure>
+      <figure class="tile"><img src="./images/rem-work-2.jpeg" alt="Office relocation" data-cap="Office relocation · Brighton"></figure>
+      <figure class="tile"><img src="./images/rem-work-3.jpg" alt="Packing fragile items" data-cap="Fragile packing · Hove"></figure>
+      <figure class="tile"><img src="./images/rem-work-4.jpg" alt="Two-man crew loading" data-cap="Two-person crew · Kemptown"></figure>
+      <figure class="tile"><img src="./images/rem-work-5.png" alt="Furniture re-assembly" data-cap="Wardrobe re-assembly · Worthing"></figure>
+      <figure class="tile"><img src="./images/rem-work-6.jpg" alt="Local delivery" data-cap="Local delivery · Saltdean"></figure>
+    </div>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview"><div><img class="lb-img" id="lbImg" alt="Preview"><div class="lb-cap" id="lbCap"></div></div></div>
+  </section>
+
+    <!-- Reviews -->
+  <section class="section" id="reviews" tabindex="-1">
+    <h2>What customers say</h2>
+    <p class="rating-badge">⭐ 98% recommend <span class="muted">· 34 Facebook reviews</span></p>
+    <div class="testis">
+      <article class="card quote">
+        <div class="stars">★★★★★</div>
+        <p>“Absolutely wonderful. Ely and the team moved our three bed house today for us and can’t rate or thank them highly enough. So professional, kind, caring and lovely. Will definitely use again and wouldn’t hesitate to recommend. Thank you guys for making the day stress-free and smooth. Legends.”</p>
+        <p class="muted">— <strong>Sam Elp</strong>, 30 Dec 2024</p>
+      </article>
+      <article class="card quote">
+        <div class="stars">★★★★★</div>
+        <p>“Outstanding — organised, friendly, affordable. Really pleased I picked this company. Will definitely use again.”</p>
+        <p class="muted">— <strong>Nick Mollings</strong>, 18 May 2024</p>
+      </article>
+      <article class="card quote">
+        <div class="stars">★★★★★</div>
+        <p>“Ely & Zack worked so hard for my house move. Fast, reliable and polite. Hired them again for a garage clearance. Thanks!”</p>
+        <p class="muted">— <strong>Emma Wakefield</strong>, 8 Nov 2023</p>
+      </article>
+    </div>
+    <p class="muted" style="margin-top:12px">Read more on <a href="https://www.facebook.com/p/E-T-Removal-Services-LTD-100087564645827/" target="_blank" rel="noopener">our Facebook page</a>.</p>
+  </section>
+
+  <!-- Booking -->
+  <section class="section" id="booking" tabindex="-1">
+    <h2>Get a removals quote</h2>
+    <p class="muted">Tell us about your move. We’ll confirm by phone or WhatsApp.</p>
+    <div class="contactGrid">
+      <div class="card" style="padding:18px">
+        <!-- ✅ Names added + real submit handler -->
+        <form id="quoteForm" novalidate>
+          <div><label class="muted" style="font-size:12px" for="fullName">Full name</label><input id="fullName" name="fullName" required placeholder="Jane Doe" autocomplete="name"></div>
+          <div><label class="muted" style="font-size:12px" for="phone">Phone</label><input id="phone" name="phone" required placeholder="+44" autocomplete="tel"></div>
+          <div><label class="muted" style="font-size:12px" for="email">Email</label><input id="email" name="email" type="email" placeholder="e.tremovalservices@outlook.com" autocomplete="email"></div>
+
+          <!-- Moving date -->
+          <div>
+            <label class="muted" style="font-size:12px" for="movingDate">Moving date</label>
+            <div class="input-icon">
+              <input id="movingDate" name="date" type="text" placeholder="Select a date" aria-label="Moving date">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M8 2v4M16 2v4M3 10h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div><label class="muted" style="font-size:12px" for="from">From (postcode)</label><input id="from" name="from" required placeholder="BN10" autocomplete="postal-code"></div>
+          <div><label class="muted" style="font-size:12px" for="to">To (postcode)</label><input id="to" name="to" required placeholder="BN1" autocomplete="postal-code"></div>
+
+          <div>
+            <label class="muted" style="font-size:12px" for="moveSize">Move size</label>
+            <select id="moveSize" name="moveSize" required>
+              <option value="">Choose…</option>
+              <option>Room / Small load</option>
+              <option>1-bed flat</option>
+              <option>2-bed flat</option>
+              <option>2-bed house</option>
+              <option>3-bed house</option>
+              <option>Office</option>
+            </select>
+          </div>
+          <div>
+            <label class="muted" style="font-size:12px" for="services">Services</label>
+            <select id="services" name="services">
+              <option>Packing</option>
+              <option>Disassemble/Re-assemble</option>
+              <option>Deliver packing materials</option>
+              <option>Just transport</option>
+            </select>
+          </div>
+
+          <div style="grid-column:1/-1">
+            <label class="muted" style="font-size:12px" for="message">Details</label>
+            <textarea id="message" name="message" placeholder="Floors/stairs, lift access, parking info, large items (sofa, wardrobe), special care, etc."></textarea>
+          </div>
+
+          <!-- Honeypot -->
+          <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0">
+
+          <div class="actions" style="grid-column:1/-1">
+            <button class="btn primary" id="quoteSubmit" type="submit">Request quote</button>
+            <span class="muted" id="formMsg" aria-live="polite" style="font-size:12px"></span>
+          </div>
+        </form>
+      </div>
+      <aside class="card" style="padding:18px">
+        <h3 style="margin-top:0">Contact</h3>
+        <p><strong>Phone:</strong> <a href="tel:01273 569343">01273 569343</a></p>
+        <p><strong>Email:</strong> <a href="mailto:info@et-services.co.uk">info@et-services.co.uk</a></p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/447305848484" target="_blank" rel="noopener">Chat now</a></p>
+        <p><strong>Facebook:</strong> <a href="https://www.facebook.com/p/E-T-Removal-Services-LTD-100087564645827/" target="_blank" rel="noopener">Visit our Facebook</a></p>
+        <p class="muted">Service area: Peacehaven · Brighton & Hove · Worthing · East Sussex</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="section" aria-label="Footer">
+    <div class="footerGrid">
+      <div class="card" style="padding:16px 18px"><h4 style="margin:0 0 6px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;opacity:.8">Address</h4><p>ET Removal Services<br>2 Lincoln Court, Lincoln Avenue<br>Peacehaven BN10 7FB, UK</p></div>
+      <div class="card" style="padding:16px 18px"><h4 style="margin:0 0 6px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;opacity:.8">Hours</h4><p>Mon–Sat: 8:00–19:00<br>Sun: By appointment</p></div>
+      <div class="card" style="padding:16px 18px"><h4 style="margin:0 0 6px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;opacity:.8">Legal</h4><p class="muted small">© <span id="year"></span> ET Removal Services</p></div>
+    </div>
+  </footer>
+
+  <!-- Sticky mobile action bar (phones only) -->
+  <div class="mobile-bar" role="group" aria-label="Quick actions">
+    <a href="tel:01273 569343">Call</a>
+    <a class="secondary" href="https://wa.me/447305848484" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+
+  <!-- ✅ Flatpickr JS (added) -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Fixed header offset + scroll-margin
+    const headerEl = document.getElementById('site-header');
+    function setHeaderOffset(){
+      const h = headerEl.getBoundingClientRect().height;
+      document.body.style.paddingTop = h + 'px';
+      document.documentElement.style.setProperty('--header-h', (h + 8) + 'px');
+    }
+    setHeaderOffset();
+    addEventListener('resize', setHeaderOffset);
+
+    // Mobile nav toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.getElementById('mainnav');
+    menuBtn.addEventListener('click', ()=>{
+      const open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.addEventListener('click', e=>{
+      if(e.target.tagName === 'A' && nav.classList.contains('open')){
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      }
+    });
+
+    // Smooth scroll + focus
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    navLinks.forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href');
+        const target = document.querySelector(id);
+        if(!target) return;
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+        target.setAttribute('tabindex','-1');
+        target.focus({preventScroll:true});
+      });
+    });
+
+    // Scrollspy
+    const sections = [...document.querySelectorAll('.hero, .section')];
+    const linkMap = Object.fromEntries([...navLinks].map(l=>[l.getAttribute('href'), l]));
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        const id = '#' + (entry.target.id || '');
+        const active = linkMap[id];
+        if(!active) return;
+        navLinks.forEach(l=>l.classList.remove('active'));
+        active.classList.add('active');
+      });
+    }, { rootMargin: `-${getComputedStyle(document.documentElement).getPropertyValue('--header-h')} 0px -60% 0px`, threshold: 0.1 });
+    sections.forEach(s=> io.observe(s));
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbCap = document.getElementById('lbCap');
+    document.getElementById('gallery').addEventListener('click', (e)=>{
+      const img = e.target.closest('img');
+      if(!img) return;
+      lbImg.src = img.src;
+      lbCap.textContent = img.dataset.cap || '';
+      lb.classList.add('open');
+    });
+    lb.addEventListener('click', ()=> lb.classList.remove('open'));
+    addEventListener('keydown', (e)=>{ if(e.key==='Escape') lb.classList.remove('open'); });
+
+    // ✅ Calendar popup for Moving date
+    flatpickr("#movingDate", {
+      dateFormat: "Y-m-d",
+      altInput: true,
+      altFormat: "D, j M Y",
+      minDate: "today",
+      disableMobile: true
+    });
+
+    // ✅ Minimal email submit to Netlify function
+    (function(){
+      const form = document.getElementById('quoteForm');
+      const msg  = document.getElementById('formMsg');
+      const btn  = document.getElementById('quoteSubmit');
+
+      function err(t){ msg.textContent = t; }
+
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        msg.textContent = '';
+        btn.disabled = true;
+
+        // Grab values
+        const fullName = document.getElementById('fullName').value.trim();
+        const phone    = document.getElementById('phone').value.trim();
+        const email    = document.getElementById('email').value.trim();
+        const date     = document.getElementById('movingDate').value.trim();
+        const from     = document.getElementById('from').value.trim();
+        const to       = document.getElementById('to').value.trim();
+        const moveSize = document.getElementById('moveSize').value;
+        const services = document.getElementById('services').value;
+        const details  = document.getElementById('message').value.trim();
+        const company  = form.querySelector('input[name="company"]').value;
+
+        // Honeypot
+        if (company) { msg.textContent = 'Thanks!'; form.reset(); btn.disabled=false; return; }
+
+        // Minimal validation matching the function
+        if (!fullName) return err('Please enter your name'), btn.disabled=false;
+        if (email && !/^\S+@\S+\.\S+$/.test(email)) return err('Please enter a valid email'), btn.disabled=false;
+        if (!phone) return err('Please enter your phone'), btn.disabled=false;
+        if (!from || !to) return err('Please enter from/to postcodes'), btn.disabled=false;
+        if (!moveSize) return err('Please select a move size'), btn.disabled=false;
+
+        // Map to function fields
+        const payload = {
+          fullName,
+          phone,
+          email,
+          // function accepts address OR postcode. We'll send a single combined address string.
+          address: `${from} ➝ ${to}`,
+          service: `${moveSize}${services ? ' · ' + services : ''}`,
+          date,
+          message: details || `Move request from ${from} to ${to}`
+          // (no attachments in this minimal version)
+        };
+
+        try{
+          const res = await fetch('/.netlify/functions/quote-request', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(payload)
+          });
+          const text = await res.text();
+          let data = {}; try { data = JSON.parse(text); } catch {}
+
+          if(!res.ok) throw new Error(data?.error || text || 'Submission failed');
+
+          msg.textContent = 'Thanks! Your quote request has been received.';
+          form.reset();
+          // clear date widget
+          const fp = document.getElementById('movingDate')._flatpickr; if (fp) fp.clear();
+        }catch(e){
+          msg.textContent = 'Sorry, something went wrong. Please try again or call 01273 569343.';
+          console.error(e);
+        }finally{
+          btn.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
