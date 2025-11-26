@@ -1,7 +1,5 @@
 // netlify/functions/quote-request.js
-
 export async function handler(event) {
-  // Only accept POST
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -16,21 +14,22 @@ export async function handler(event) {
       fullName,
       email,
       phone,
-      postcode,
-      service,      // generic service description (we use this for both forms)
+      postcode,      // handyman
+      service,       // handyman or "Removals"
       date,
       message,
-      attachments = [],
-      company,      // honeypot
 
-      // in case we ever send raw removals fields directly
+      // removals-specific fields
       from,
       to,
       moveSize,
       services,
+
+      attachments = [],
+      company,
     } = data;
 
-    // 🕵️ Honeypot spam trap
+    // Honeypot spam trap
     if (company) {
       return {
         statusCode: 200,
@@ -55,36 +54,51 @@ export async function handler(event) {
       };
     }
 
-    // Try to build a helpful subject line
-    const subjectBits = [];
-    if (service) subjectBits.push(service);
-    if (moveSize) subjectBits.push(moveSize);
-    const subjectSuffix = subjectBits.length
-      ? ` – ${subjectBits.join(' / ')}`
-      : '';
-    const subject = `New website quote request from ${fullName || 'Unknown'}${subjectSuffix}`;
+    // Decide if this is handyman or removals based on fields
+    const isRemovals = !!(from || to || moveSize);
 
-    // Build email text body (includes both handyman + removals style fields)
-    const textBody = `
-New quote request from the ET Services website
+    const subject = isRemovals
+      ? `New removals quote request from ${fullName || 'Unknown'}`
+      : `New handyman quote request from ${fullName || 'Unknown'}`;
+
+    let textBody;
+
+    if (isRemovals) {
+      textBody = `
+New REMOVALS quote request
 
 Name: ${fullName || '-'}
 Email: ${email || '-'}
 Phone: ${phone || '-'}
 
-Postcode: ${postcode || from || '-'}
-Service: ${service || services || '-'}
+Moving date: ${date || 'Not specified'}
 
-Move details (if removals):
-- From: ${from || '-'}
-- To: ${to || '-'}
-- Move size: ${moveSize || '-'}
+From: ${from || '-'}
+To: ${to || '-'}
+
+Move size: ${moveSize || '-'}
+Services requested: ${services || '-'}
+
+Details:
+${message || '(no additional details)'}
+      `.trim();
+    } else {
+      textBody = `
+New HANDYMAN quote request
+
+Name: ${fullName || '-'}
+Email: ${email || '-'}
+Phone: ${phone || '-'}
+
+Postcode: ${postcode || '-'}
+Service: ${service || '-'}
 
 Preferred date: ${date || 'Not specified'}
 
 Message:
 ${message || '(no message)'}
-    `.trim();
+      `.trim();
+    }
 
     const payload = {
       from: { email: fromEmail, name: 'ET Services Website' },
@@ -93,7 +107,7 @@ ${message || '(no message)'}
       text: textBody,
     };
 
-    // Optional attachments (handyman photos)
+    // Optional attachments
     if (attachments.length) {
       payload.attachments = attachments.map((a) => ({
         filename: a.filename,
