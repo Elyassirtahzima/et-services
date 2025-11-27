@@ -571,7 +571,7 @@
       disableMobile: true
     });
 
-    // ✅ Send removal quote to Netlify function
+    // ✅ Send removal quote to Netlify function + redirect to thank-you
     const quoteForm = document.getElementById('quoteForm');
     const submitBtn = document.getElementById('quoteSubmit');
     const formMsg = document.getElementById('formMsg');
@@ -612,8 +612,8 @@
           console.error('Quote error:', data);
           formMsg.textContent = 'Sorry, something went wrong. Please try again or call 01273 569343.';
         } else {
-          formMsg.textContent = 'Thanks! Your quote request has been received.';
-          quoteForm.reset();
+          // ✅ SUCCESS: go to shared thank-you page for removals
+          window.location.href = '/thank-you.html?type=removals';
         }
       } catch (err) {
         console.error(err);
