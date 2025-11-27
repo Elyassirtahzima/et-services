@@ -1,4 +1,4 @@
 User-agent: *
-Disallow:
+Disallow: /thank-you.html
 
 Sitemap: https://www.et-services.co.uk/sitemap.xml
