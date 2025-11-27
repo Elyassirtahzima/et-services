@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quote request sent | ET Services</title>
+  <meta name="description" content="Thank you – your quote request has been received by ET Services." />
+
+  <style>
+    :root{
+      --bg:#020617;
+      --fg:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#f59e0b;
+      --accent2:#38bdf8;
+      --border:rgba(148,163,184,.4);
+      --glass:rgba(15,23,42,.9);
+      --shadow:0 24px 60px rgba(0,0,0,.75);
+      --header-h:68px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Arial;
+      background:
+        radial-gradient(1100px 700px at 50% 0%, #111827 0%, var(--bg) 55%);
+      color:var(--fg);
+      -webkit-text-size-adjust:100%;
+    }
+
+    /* ===== Header / Nav ===== */
+    .header{
+      position:fixed;
+      inset:0 0 auto 0;
+      z-index:1000;
+      background:rgba(7,12,24,.88);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(15,23,42,.9);
+    }
+    .wrap{
+      max-width:1200px;
+      margin:auto;
+      padding:10px 18px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--fg);
+      font-weight:800;
+      letter-spacing:.02em;
+      font-size:16px;
+    }
+    .brand-logo{
+      width:30px;
+      height:30px;
+      border-radius:999px;
+      object-fit:cover;
+      box-shadow:0 0 0 1px rgba(255,255,255,.2),0 8px 18px rgba(0,0,0,.45);
+    }
+    .brand span{
+      white-space:nowrap;
+    }
+    nav{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    nav a{
+      text-decoration:none;
+      color:var(--muted);
+      margin:0 6px;
+      padding:6px 0;
+      font-size:14px;
+      border-bottom:2px solid transparent;
+      transition:border-color .18s ease,color .18s ease;
+    }
+    nav a:hover{
+      color:var(--fg);
+      border-bottom-color:rgba(248,250,252,.6);
+    }
+    .spacer{flex:1}
+    .header-cta-row{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .header-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:.45rem .85rem;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.5);
+      font-size:13px;
+      text-decoration:none;
+      color:var(--fg);
+      background:rgba(15,23,42,.9);
+      white-space:nowrap;
+    }
+    .header-cta.primary{
+      background:linear-gradient(180deg,rgba(245,158,11,.32),rgba(15,23,42,1));
+      border-color:rgba(245,158,11,.6);
+      color:#0b1120;
+      box-shadow:0 10px 26px rgba(245,158,11,.3);
+      font-weight:600;
+    }
+    .menu-btn{
+      display:none;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.55);
+      background:rgba(15,23,42,.9);
+      padding:.45rem .6rem;
+      cursor:pointer;
+    }
+    .menu-btn svg{width:22px;height:22px;color:var(--fg)}
+
+    /* ===== Layout around card ===== */
+    main.page{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:calc(var(--header-h) + 20px) 16px 32px;
+    }
+
+    .card{
+      width:100%;
+      max-width:520px;
+      background:linear-gradient(145deg, rgba(15,23,42,.98), rgba(6,12,27,.98));
+      border-radius:24px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      padding:22px 22px 20px;
+      position:relative;
+    }
+
+    /* top tag */
+    .tag{
+      position:absolute;
+      top:16px;
+      right:18px;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:#64748b;
+      padding:4px 8px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.3);
+      background:rgba(15,23,42,.96);
+    }
+
+    /* badge */
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:.35rem .7rem;
+      border-radius:999px;
+      background:rgba(22,163,74,.1);
+      border:1px solid rgba(34,197,94,.45);
+      font-size:12px;
+      color:#bbf7d0;
+      margin-bottom:10px;
+    }
+    .badge-icon{
+      width:16px;height:16px;border-radius:999px;
+      display:inline-flex;align-items:center;justify-content:center;
+      background:rgba(34,197,94,.3);
+      color:#bbf7d0;font-size:11px;
+    }
+
+    h1{
+      font-size:20px;
+      margin-bottom:6px;
+    }
+    .muted{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .service-chip{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin:16px 0 12px;
+      padding:.6rem .8rem;
+      border-radius:18px;
+      border:1px solid rgba(148,163,184,.5);
+      background:rgba(15,23,42,.96);
+      font-size:13px;
+    }
+    .service-chip span.emoji{
+      font-size:18px;
+      line-height:1;
+      margin-top:1px;
+    }
+
+    .next-steps{
+      margin:6px 0 10px;
+      padding:10px 10px 8px;
+      border-radius:14px;
+      background:rgba(15,23,42,.9);
+      border:1px dashed rgba(148,163,184,.6);
+    }
+    .next-steps-title{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:#9ca3af;
+      margin-bottom:6px;
+    }
+    .next-steps ul{
+      list-style:none;
+      padding-left:0;
+      margin:0;
+      font-size:13px;
+      color:#d1d5db;
+    }
+    .next-steps li{
+      display:flex;
+      gap:6px;
+      align-items:flex-start;
+      margin-bottom:4px;
+    }
+    .next-steps li span.dot{
+      width:5px;height:5px;
+      border-radius:999px;
+      margin-top:7px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      flex-shrink:0;
+    }
+
+    .contact{
+      margin-top:8px;
+      font-size:14px;
+      line-height:1.7;
+    }
+    .contact a{
+      color:#fbbf24;
+      text-decoration:none;
+    }
+    .contact a:hover{text-decoration:underline}
+
+    .btn-row{
+      display:flex;
+      gap:10px;
+      margin-top:18px;
+    }
+    .btn{
+      flex:1;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.6);
+      padding:.7rem .9rem;
+      font-size:14px;
+      font-weight:600;
+      text-align:center;
+      text-decoration:none;
+      cursor:pointer;
+      transition:
+        background .18s ease,
+        transform .12s ease,
+        box-shadow .18s ease,
+        border-color .18s ease;
+    }
+    .btn-primary{
+      background:linear-gradient(180deg, rgba(245,158,11,.3), rgba(15,23,42,1));
+      border-color:rgba(245,158,11,.6);
+      box-shadow:0 12px 26px rgba(245,158,11,.3);
+      color:#0b1120;
+    }
+    .btn-secondary{
+      background:rgba(15,23,42,.95);
+      color:var(--fg);
+    }
+    .btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 16px 32px rgba(15,23,42,.8);
+    }
+
+    .ref{
+      margin-top:14px;
+      font-size:11px;
+      color:#6b7280;
+    }
+
+    /* Focus */
+    a:focus-visible,
+    button:focus-visible{
+      outline:2px solid var(--accent2);
+      outline-offset:2px;
+      box-shadow:0 0 0 1px var(--accent2);
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width:900px){
+      .menu-btn{display:inline-flex}
+      nav{
+        position:fixed;
+        top:var(--header-h);
+        left:0;right:0;
+        background:rgba(7,12,24,.97);
+        border-bottom:1px solid rgba(15,23,42,.9);
+        flex-direction:column;
+        align-items:flex-start;
+        padding:10px 18px 12px;
+        transform:translateY(-18px);
+        opacity:0;
+        pointer-events:none;
+        transition:opacity .18s ease, transform .18s ease;
+      }
+      nav a{
+        margin:0;
+        padding:8px 2px;
+      }
+      nav.open{
+        opacity:1;
+        pointer-events:auto;
+        transform:translateY(0);
+      }
+      .header-cta-row{
+        display:none;
+      }
+      main.page{
+        padding-top:calc(var(--header-h) + 24px);
+      }
+    }
+
+    @media (max-width:600px){
+      .card{
+        padding:20px 16px 18px;
+        border-radius:20px;
+      }
+      .tag{
+        top:14px;
+        right:14px;
+      }
+      .btn-row{
+        flex-direction:column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header class="header" id="site-header">
+    <div class="wrap">
+      <button class="menu-btn" aria-label="Toggle menu" aria-controls="mainnav" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <a class="brand" href="/index.html">
+        <!-- swap this src if you prefer a different logo -->
+        <img class="brand-logo" src="./images/et-handyman-logo.jpg" alt="ET Services logo" width="30" height="30">
+        <span>ET Services</span>
+      </a>
+
+      <div class="spacer"></div>
+
+      <nav id="mainnav" aria-label="Main navigation">
+        <a href="/index.html">Home</a>
+        <a href="/handyman.html">Handyman</a>
+        <a href="/removals.html">Removals</a>
+      </nav>
+
+      <div class="header-cta-row">
+        <a class="header-cta" href="tel:01273569343">Call 01273 569343</a>
+        <a class="header-cta primary" href="https://wa.me/447305848484" target="_blank" rel="noopener">
+          WhatsApp us
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="page">
+    <section class="card" aria-labelledby="title">
+      <div class="tag" id="serviceTag">ET Services</div>
+
+      <div class="badge">
+        <span class="badge-icon">✓</span>
+        <span>Quote request sent</span>
+      </div>
+
+      <h1 id="title">Thanks, we’ve got your request.</h1>
+      <p class="muted" id="lead">
+        We’ll review your details and get back to you as soon as possible to confirm price and availability.
+      </p>
+
+      <div class="service-chip" id="serviceChip">
+        <span class="emoji" id="serviceEmoji">🧰</span>
+        <span id="serviceText">Property services – handyman and removal jobs across Brighton &amp; Peacehaven.</span>
+      </div>
+
+      <div class="next-steps" id="nextSteps">
+        <div class="next-steps-title">What happens next</div>
+        <ul>
+          <li><span class="dot"></span><span>We’ll review the details you sent through your online form.</span></li>
+          <li><span class="dot"></span><span>We’ll contact you by phone or WhatsApp to confirm the job and give a clear quote.</span></li>
+          <li><span class="dot"></span><span>Once you’re happy, we’ll lock in a time that works for you.</span></li>
+        </ul>
+      </div>
+
+      <div class="contact">
+        <p>If your job is urgent, you can also reach us directly:</p>
+        <p>
+          Phone: <a href="tel:01273569343">01273 569343</a><br>
+          Email: <a href="mailto:info@et-services.co.uk">info@et-services.co.uk</a>
+        </p>
+      </div>
+
+      <div class="btn-row">
+        <a class="btn btn-secondary" href="/index.html">Back to main site</a>
+        <a class="btn btn-primary" href="https://wa.me/447305848484" target="_blank" rel="noopener">
+          Chat on WhatsApp
+        </a>
+      </div>
+
+      <p class="ref" id="refText">Reference: will be included in the email we receive.</p>
+    </section>
+  </main>
+
+  <script>
+    // Simple header height padding (if needed later)
+    const headerEl = document.getElementById('site-header');
+    function setHeaderOffset(){
+      if(!headerEl) return;
+      const h = headerEl.getBoundingClientRect().height;
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+    setHeaderOffset();
+    addEventListener('resize', setHeaderOffset);
+
+    // Mobile nav toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.getElementById('mainnav');
+    if (menuBtn && nav) {
+      menuBtn.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      nav.addEventListener('click', e => {
+        if (e.target.tagName === 'A' && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded','false');
+        }
+      });
+    }
+
+    // ===== Dynamic content based on ?type= =====
+    const params = new URLSearchParams(window.location.search);
+    const type = (params.get('type') || '').toLowerCase();
+
+    const titleEl = document.getElementById('title');
+    const lead  = document.getElementById('lead');
+    const tag   = document.getElementById('serviceTag');
+    const emoji = document.getElementById('serviceEmoji');
+    const text  = document.getElementById('serviceText');
+
+    if (type === 'removals') {
+      tag.textContent = 'Removal services';
+      emoji.textContent = '🚚';
+      text.textContent = 'Removal services – home, flat, office and nationwide moves.';
+      titleEl.textContent = 'Thanks, we’ve got your removals request.';
+      lead.textContent  = 'We’ll review your move details and get back to you as soon as possible to confirm timing, vehicle size and price.';
+    } else if (type === 'handyman') {
+      tag.textContent = 'Handyman services';
+      emoji.textContent = '🔧';
+      text.textContent = 'Handyman services – repairs, decorating, tiling, gardening & more.';
+      titleEl.textContent = 'Thanks, we’ve got your handyman request.';
+      lead.textContent  = 'We’ll review your job details and get back to you as soon as possible with availability and a clear quote.';
+    } else {
+      // generic / fallback already set in HTML
+    }
+  </script>
+</body>
+</html>

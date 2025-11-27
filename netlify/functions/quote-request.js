@@ -15,7 +15,7 @@ export async function handler(event) {
       email,
       phone,
       postcode,      // handyman
-      service,       // handyman or "Removals"
+      service,       // handyman service name
       date,
       message,
 
@@ -54,18 +54,26 @@ export async function handler(event) {
       };
     }
 
-    // Decide if this is handyman or removals based on fields
+    // Decide if this is handyman or removals based on fields present
     const isRemovals = !!(from || to || moveSize);
+    const typeLabel = isRemovals ? 'Removal services' : 'Handyman services';
 
-    const subject = isRemovals
-      ? `New removals quote request from ${fullName || 'Unknown'}`
-      : `New handyman quote request from ${fullName || 'Unknown'}`;
+    // Simple reference for tracking
+    const reference = 'ET-' + Date.now().toString().slice(-6);
+
+    // Subject clearly shows type + reference
+    const subject = `[${typeLabel}] Quote request ${reference} from ${
+      fullName || 'Unknown'
+    }`;
 
     let textBody;
 
     if (isRemovals) {
       textBody = `
-New REMOVALS quote request
+Quote request from ET Services website
+
+Reference: ${reference}
+Type: ${typeLabel}
 
 Name: ${fullName || '-'}
 Email: ${email || '-'}
@@ -84,14 +92,17 @@ ${message || '(no additional details)'}
       `.trim();
     } else {
       textBody = `
-New HANDYMAN quote request
+Quote request from ET Services website
+
+Reference: ${reference}
+Type: ${typeLabel}
 
 Name: ${fullName || '-'}
 Email: ${email || '-'}
 Phone: ${phone || '-'}
 
 Postcode: ${postcode || '-'}
-Service: ${service || '-'}
+Service requested: ${service || '-'}
 
 Preferred date: ${date || 'Not specified'}
 
@@ -107,7 +118,7 @@ ${message || '(no message)'}
       text: textBody,
     };
 
-    // Optional attachments
+    // Optional attachments (for handyman in future if needed)
     if (attachments.length) {
       payload.attachments = attachments.map((a) => ({
         filename: a.filename,

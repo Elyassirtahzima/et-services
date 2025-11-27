@@ -1,4 +1,4 @@
 User-agent: *
-Allow: /
+Disallow:
 
-Sitemap: https://ethandman.co.uk/sitemap.xml
+Sitemap: https://www.et-services.co.uk/sitemap.xml
