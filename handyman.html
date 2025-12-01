@@ -322,9 +322,9 @@ textarea:focus-visible {
   .lb-img{max-height:calc(100vh - 180px - env(safe-area-inset-bottom))}
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}.triptych .tile img{transition:none}}
+
 /* Mobile UI Upgrade for Hero + USP badges */
 @media (max-width: 600px) {
-
   .hero {
     grid-template-columns: 1fr;
     text-align: left;
@@ -383,6 +383,7 @@ textarea:focus-visible {
       <a href="#services">Services</a>
       <a href="#work">Our Work</a>
       <a href="#reviews">Reviews</a>
+      <a href="#blog">Blog</a>
       <a href="#booking">Book</a>
     </nav>
     <a class="cta" href="https://www.facebook.com/profile.php?id=61559444704457&sk=about" target="_blank" rel="noopener">Facebook</a>
@@ -507,9 +508,150 @@ textarea:focus-visible {
   </div>
 
   <div class="projects">
-    <!-- Project cards (unchanged) -->
-    <!-- ... all your project markup here exactly as before ... -->
-    <!-- I’ve kept it identical to your version above -->
+    <!-- Project 1: Carpeting — Brighton -->
+    <article class="card project" data-project="p1">
+      <header class="project-head">
+        <h3 class="project-title">Carpeting <span class="muted">— Brighton</span></h3>
+      </header>
+      <div class="triptych">
+        <figure class="tile phase-before">
+          <img src="./images/Rug%201.jpg" alt="Before — Carpeting in Brighton" data-cap="BEFORE — Carpeting — Brighton" data-project="p1" data-phase="before" width="1000" height="700">
+          <span class="badge">Before</span>
+        </figure>
+        <figure class="tile phase-during">
+          <img src="./images/rug%202.jpg" alt="During — Carpeting in Brighton" data-cap="DURING — Carpeting — Brighton" data-project="p1" data-phase="during" width="1000" height="700">
+          <span class="badge">During</span>
+        </figure>
+        <figure class="tile phase-after">
+          <img src="./images/rugging%202.jpg" alt="After — Carpeting in Brighton" data-cap="AFTER — Carpeting — Brighton" data-project="p1" data-phase="after" width="1000" height="700">
+          <span class="badge">After</span>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Project 2: Path & gravel — Peacehaven -->
+    <article class="card project" data-project="p2">
+      <header class="project-head">
+        <h3 class="project-title">Path & gravel <span class="muted">— Peacehaven</span></h3>
+      </header>
+      <div class="triptych">
+        <figure class="tile phase-before">
+          <img src="./images/6%20Before%20Tiling.jpg" alt="Before — Path & gravel in Peacehaven" data-cap="BEFORE — Path & gravel — Peacehaven" data-project="p2" data-phase="before" width="1000" height="700">
+          <span class="badge">Before</span>
+        </figure>
+        <figure class="tile phase-during">
+          <img src="./images/Landscaping2.jpg" alt="During — Path & gravel in Peacehaven" data-cap="DURING — Path & gravel — Peacehaven" data-project="p2" data-phase="during" width="1000" height="700">
+          <span class="badge">During</span>
+        </figure>
+        <figure class="tile phase-after">
+          <img src="./images/Tiling2.jpg" alt="After — Path & gravel in Peacehaven" data-cap="AFTER — Path & gravel — Peacehaven" data-project="p2" data-phase="after" width="1000" height="700">
+          <span class="badge">After</span>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Project 3: Garden clearance — Hove -->
+    <article class="card project" data-project="p3">
+      <header class="project-head"><h3 class="project-title">Garden clearance <span class="muted">— Hove</span></h3></header>
+      <div class="triptych">
+        <figure class="tile phase-before">
+          <img src="./images/Weeding%20Before.jpg" alt="Before — Garden clearance in Hove" data-cap="BEFORE — Garden clearance — Hove" data-project="p3" data-phase="before" width="1000" height="700">
+          <span class="badge">Before</span>
+        </figure>
+        <figure class="tile phase-during">
+          <img src="./images/Weeding%20During.jpg" alt="During — Garden clearance in Hove" data-cap="DURING — Garden clearance — Hove" data-project="p3" data-phase="during" width="1000" height="700">
+          <span class="badge">During</span>
+        </figure>
+        <figure class="tile phase-after">
+          <img src="./images/Weeding%20After.jpg" alt="After — Garden clearance in Hove" data-cap="AFTER — Garden clearance — Hove" data-project="p3" data-phase="after" width="1000" height="700">
+          <span class="badge">After</span>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Project 4: Roof valley repair — Brighton -->
+    <article class="card project" data-project="p4">
+      <header class="project-head">
+        <h3 class="project-title">Roof valley repair <span class="muted">— Brighton</span></h3>
+      </header>
+      <div class="triptych">
+        <figure class="tile phase-before">
+          <img src="./images/Roofing%20.jpg" alt="Before — Roof valley repair in Brighton" data-cap="BEFORE — Roof valley repair — Brighton" data-project="p4" data-phase="before" width="1000" height="700">
+          <span class="badge">Before</span>
+        </figure>
+        <figure class="tile phase-during">
+          <img src="./images/Roof%20repairs.jpg" alt="During — Roof valley repair in Brighton" data-cap="DURING — Roof valley repair — Brighton" data-project="p4" data-phase="during" width="1000" height="700">
+          <span class="badge">During</span>
+        </figure>
+        <figure class="tile phase-after">
+          <img src="./images/Roof%20finish.jpg" alt="After — Roof valley repair in Brighton" data-cap="AFTER — Roof valley repair — Brighton" data-project="p4" data-phase="after" width="1000" height="700">
+          <span class="badge">After</span>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Project 5: Resin driveway — East Sussex -->
+    <article class="card project" data-project="p5">
+      <header class="project-head">
+        <h3 class="project-title">Resin driveway <span class="muted">— East Sussex</span></h3>
+      </header>
+      <div class="triptych">
+        <figure class="tile phase-before">
+          <img src="./images/4%20Before%20Driveway.jpg" alt="Before — Resin driveway in East Sussex" data-cap="BEFORE — Resin driveway — East Sussex" data-project="p5" data-phase="before" width="1000" height="700">
+          <span class="badge">Before</span>
+        </figure>
+        <figure class="tile phase-during">
+          <img src="./images/2%20During%20Driveway%201.jpg" alt="During — Resin driveway in East Sussex" data-cap="DURING — Resin driveway — East Sussex" data-project="p5" data-phase="during" width="1000" height="700">
+          <span class="badge">During</span>
+        </figure>
+        <figure class="tile phase-after">
+          <img src="./images/Grandting3.jpg" alt="After — Resin driveway in East Sussex" data-cap="AFTER — Resin driveway — East Sussex" data-project="p5" data-phase="after" width="1000" height="700">
+          <span class="badge">After</span>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Project 6: Patterned tiling — Brighton -->
+    <article class="card project" data-project="p6">
+      <header class="project-head">
+        <h3 class="project-title">Patterned tiling <span class="muted">— Brighton</span></h3>
+      </header>
+      <div class="triptych">
+        <figure class="tile phase-before">
+          <img src="./images/Pattern%20Tiling%20Before.jpg" alt="Before — Patterned tiling in Brighton" data-cap="BEFORE — Patterned tiling — Brighton" data-project="p6" data-phase="before" width="1000" height="700">
+          <span class="badge">Before</span>
+        </figure>
+        <figure class="tile phase-during">
+          <img src="./images/Marbling.jpg" alt="During — Patterned tiling in Brighton" data-cap="DURING — Patterned tiling — Brighton" data-project="p6" data-phase="during" width="1000" height="700">
+          <span class="badge">During</span>
+        </figure>
+        <figure class="tile phase-after">
+          <img src="./images/Pattern%20Tiling%20Finishing.jpg" alt="After — Patterned tiling in Brighton" data-cap="AFTER — Patterned tiling — Brighton" data-project="p6" data-phase="after" width="1000" height="700">
+          <span class="badge">After</span>
+        </figure>
+      </div>
+    </article>
+
+    <!-- Project 7: Shopfront tiling & edging — London Road -->
+    <article class="card project" data-project="p7">
+      <header class="project-head">
+        <h3 class="project-title">Shopfront tiling & edging <span class="muted">— London Road</span></h3>
+      </header>
+      <div class="triptych">
+        <figure class="tile phase-before">
+          <img src="./images/Marbling%201.jpg" alt="Before — cracked shopfront tiles and damaged border" data-cap="BEFORE — Shopfront tiling & edging — London Road" data-project="p7" data-phase="before" width="1000" height="700">
+          <span class="badge">Before</span>
+        </figure>
+        <figure class="tile phase-during">
+          <img src="./images/Marbling%202.jpg" alt="During — repairs to tiles, grout and edging border" data-cap="DURING — Shopfront tiling & edging — London Road" data-project="p7" data-phase="during" width="1000" height="700">
+          <span class="badge">During</span>
+        </figure>
+        <figure class="tile phase-after">
+          <img src="./images/Marbling%203.jpg" alt="After — refreshed shopfront tiles with neat dark border" data-cap="AFTER — Shopfront tiling & edging — London Road" data-project="p7" data-phase="after" width="1000" height="700">
+          <span class="badge">After</span>
+        </figure>
+      </div>
+    </article>
   </div>
 
   <!-- Lightbox -->
@@ -532,6 +674,54 @@ textarea:focus-visible {
     <article class="card quote"><div class="stars">★★★★★</div><p>“Amazing service — painting, decorating, tiling, gardening. ❤️”</p><p class="muted">— Amir Ali, Brighton</p></article>
     <article class="card quote"><div class="stars">★★★★★</div><p>“Friendly and professional — will book again.”</p><p class="muted">— Louise, Hove</p></article>
   </div>
+</section>
+
+<!-- ===== Blog (UPDATED) ===== -->
+<section class="section" id="blog" tabindex="-1">
+  <h2>Blog Posts</h2>
+  <p class="muted">Stories and tips from real jobs across Peacehaven &amp; Brighton.</p>
+
+  <div class="grid">
+    <!-- Post 1 -->
+    <article class="card svc">
+      <img src="./images/ET Service Blog.jpg" alt="ET Services collage" loading="lazy" width="240" height="240">
+      <div>
+        <h3>Welcome to ET Services Stories</h3>
+        <p>Stories and lessons from our everyday work.</p>
+        <p style="margin-top:8px">
+          <a class="btn" href="https://tahzimaelyassir.substack.com/p/welcome-to-et-services-stories" target="_blank" rel="noopener">Read post</a>
+        </p>
+      </div>
+    </article>
+
+    <!-- Post 2 -->
+    <article class="card svc">
+      <img src="./images/Gardening Blog.png" alt="Soil and roots close-up" loading="lazy" width="240" height="240">
+      <div>
+        <h3>Life Beneath the Soil</h3>
+        <p>You start a job, and nature starts a conversation.</p>
+        <p style="margin-top:8px">
+          <a class="btn" href="https://tahzimaelyassir.substack.com/p/life-beneath-the-soil" target="_blank" rel="noopener">Read post</a>
+        </p>
+      </div>
+    </article>
+
+    <!-- Post 3 -->
+    <article class="card svc">
+      <img src="./images/mole-story.jpg" alt="Gently moving a mole to safety" loading="lazy" width="240" height="240">
+      <div>
+        <h3>The Day We Met Some Moles</h3>
+        <p>How a small encounter reminded us that care for nature is part of every good job.</p>
+        <p style="margin-top:8px">
+          <a class="btn" href="https://tahzimaelyassir.substack.com/p/the-day-we-met-some-moles" target="_blank" rel="noopener">Read post</a>
+        </p>
+      </div>
+    </article>
+  </div>
+
+  <p style="margin-top:14px">
+    <a class="btn primary" href="https://tahzimaelyassir.substack.com" target="_blank" rel="noopener">View all posts on Substack</a>
+  </p>
 </section>
 
 <!-- Booking -->
